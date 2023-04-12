@@ -2,7 +2,7 @@ package com.bignerdranch.nyethack
 
 import kotlin.system.exitProcess
 
-object Game {
+class Game {
     val worldMap = listOf(
         listOf(TownSquare(), Tavern(), Room("Back Room")),
         listOf(MonsterRoom("A Long Corridor"), Room("A Generic Room")),
@@ -11,12 +11,6 @@ object Game {
 
     var currentRoom: Room = worldMap[0][0]
     var currentPosition = Coordinate(0, 0)
-
-    init {
-        narrate("Welcome, adventurer")
-        val mortality = if (player.isImmortal) "an immortal" else "a mortal"
-        narrate("${player.name}, $mortality, has ${player.healthPoints} health points")
-    }
 
     fun play() {
         while (true) {
@@ -97,6 +91,7 @@ object Game {
         }
     }
 
+    context(Game)
     class GameInput(
         private val input: String
     ) {

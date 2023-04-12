@@ -22,6 +22,9 @@ kotlin {
     jvmToolchain(11)
 }
 
+val compileKotlin: org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask<*> by tasks
+compileKotlin.compilerOptions.freeCompilerArgs.add("-Xcontext-receivers")
+
 application {
     mainClass.set("com.bignerdranch.nyethack.MainKt")
 }

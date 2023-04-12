@@ -8,7 +8,10 @@ fun main() {
     player = Player(playerName)
     changeNarratorMood()
 
-    Game.play()
+    val game = Game()
+    with(game) {
+        startGame()
+    }
 }
 
 private fun promptHeroName(): String {
@@ -23,4 +26,13 @@ private fun promptHeroName(): String {
     }
 
     return input
+}
+
+context(Game)
+private fun startGame() {
+    narrate("Welcome, adventurer")
+    val mortality = if (player.isImmortal) "an immortal" else "a mortal"
+    narrate("${player.name}, $mortality, has ${player.healthPoints} health points")
+
+    play()
 }
