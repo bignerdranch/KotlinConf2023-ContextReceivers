@@ -12,16 +12,6 @@ class Game {
     var currentRoom: Room = worldMap[0][0]
     var currentPosition = Coordinate(0, 0)
 
-    fun play() {
-        while (true) {
-            narrate("${player.name} of ${player.hometown}, ${player.title}, is in ${currentRoom.description()}")
-            currentRoom.enterRoom()
-
-            print("> Enter your command: ")
-            GameInput(readln()).processCommand()
-        }
-    }
-
     fun move(direction: Direction) {
         val newPosition = currentPosition move direction
         val newRoom = worldMap[newPosition].orEmptyRoom()
